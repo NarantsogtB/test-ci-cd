@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "bun build ./index.ts --outdir ./dist --target bun"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
