@@ -25,12 +25,13 @@ jobs:
           bun-version: latest
 
       - name: Bun суулгалаа
-        run: bun install --frozen-lockfile
+        run: cd Test-demo && bun install --frozen-lockfile
 
       - name: Дүрмээ шалгалаа
-        run: bun run lint
+        run: cd Test-demo && bun run lint
 
   build:
+    needs: lint-client
     name: Кодоо барьцгаая
     runs-on: ubuntu-latest
 
@@ -39,6 +40,6 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
 
-      - run: bun install --frozen-lockfile
+      - run: cd Test-demo && bun install --frozen-lockfile
 
-      - run: bun run build
+      - run: cd Test-demo && bun run build
