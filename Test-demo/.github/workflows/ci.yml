@@ -1,9 +1,7 @@
 name: CI Testing With students
 
-on:
-  push:
-    branches: [main]
-  workflow_call:
+on: [push]
+
 
 jobs:
   lint-client:
@@ -25,10 +23,10 @@ jobs:
           bun-version: latest
 
       - name: Bun суулгалаа
-        run: bun install --frozen-lockfile
+        run: cd Test-demo && bun install --frozen-lockfile
 
       - name: Дүрмээ шалгалаа
-        run: bun run lint
+        run: cd Test-demo && bun run lint
 
   build:
     name: Кодоо барьцгаая
@@ -39,6 +37,6 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
 
-      - run: bun install --frozen-lockfile
+      - run: cd Test-demo &&  bun install --frozen-lockfile
 
-      - run: bun run build
+      - run: cd Test-demo &&  bun run build
